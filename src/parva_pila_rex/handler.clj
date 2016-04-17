@@ -5,14 +5,14 @@
             [ring.middleware.json :as ring-json]
             [ring.util.response :as rr]))
 
-(def dummy-regexes [
+(def regexes (atom [
   {:regex (str #"ROFLROFL")}
   {:regex (str #"^rofl$")}
-  {:regex (str #"\d{2}\.\d{2}\.\d{4}")}])
+  {:regex (str #"\d{2}\.\d{2}\.\d{4}")}]))
 
 (defroutes app-routes
   (GET "/regexes" []
-    (rr/response dummy-regexes))
+    (rr/response @regexes))
   (route/not-found "Not Found"))
 
 (def app

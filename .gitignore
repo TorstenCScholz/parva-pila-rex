@@ -10,3 +10,4 @@ pom.xml.asc
 /.nrepl-port
 /.cljs_rhino_repl
 /resources/public/**/*.js
+/resources/public/assets

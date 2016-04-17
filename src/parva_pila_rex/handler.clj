@@ -6,13 +6,13 @@
             [ring.util.response :as rr]))
 
 (def dummy-regexes [
-  {:regex (str #"abcdef")}
+  {:regex (str #"ROFLROFL")}
   {:regex (str #"^rofl$")}
   {:regex (str #"\d{2}\.\d{2}\.\d{4}")}])
 
 (defroutes app-routes
   (GET "/regexes" []
-         (rr/response dummy-regexes))
+    (rr/response dummy-regexes))
   (route/not-found "Not Found"))
 
 (def app

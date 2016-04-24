@@ -20,6 +20,9 @@
   (POST "/regexes" request
     (update-regexes (:body request) conj)
     (rr/response @regexes))
+  (DELETE "/regexes" request
+    (update-regexes (:body request) disj)
+    (rr/response @regexes))
   (route/not-found "Not Found"))
 
 (def app

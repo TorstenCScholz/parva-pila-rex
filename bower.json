@@ -1,0 +1,22 @@
+{
+  "name": "parva-pila-rex",
+  "homepage": "https://github.com/TorstenCScholz/parva-pila-rex",
+  "authors": [
+    "Torsten Scholz <doaschdn@googlemail.com>"
+  ],
+  "description": "Simple regex game",
+  "main": "index.html",
+  "moduleType": [],
+  "keywords": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.x"
+  }
+}

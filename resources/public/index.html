@@ -1,5 +1,5 @@
 <!DOCTYPE>
-<html>
+<html ng-app="App" ng-strict-di>
   <head>
     <title>Index</title>
     <link rel="stylesheet" href="assets/vendor/bootstrap-3.3.6-dist/css/bootstrap.min.css">
@@ -26,13 +26,21 @@
           <button class="btn btn-danger" type="button" id="btn-delete-regex">Remove regex</button>
         </form>
 
-        The following regular expressions are known:
-        <ul class="list-group" id="regex-list"></ul>
+
+        <ul class="list-group" ng-controller="RegexesListController">
+          <li class="list-group-item" ng-repeat="regex in regexes">
+            <h2>{{regex.name}}</h2>
+            <p class="helper-block">{{regex.description}}</p>
+            <code style="color: green" ng-repeat="matchPositive in regex.matches.public.positive">{{matchPositive}}</code>
+            <code style="color: red" ng-repeat="matchNegative in regex.matches.public.negative">{{matchNegative}}</code>
+          </li>
+        </ul>
       </div>
       <div class="col-md-3"></div>
     </div>
 
-    <script type="text/javascript" src="main.js"></script>
-    <script type="text/javascript">parva_pila_rex.core.init()</script>
-  </body>
+    <script type="text/javascript" src="assets/js/lib.min.js"></script>
+    <script type="text/javascript" src="assets/js/app.min.js"></script>
+    <script src="assets/js/config.min.js"></script>
+  <script src="//localhost:35729/livereload.js"></script></body>
 </html>

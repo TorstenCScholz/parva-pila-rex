@@ -5,14 +5,21 @@
             [ring.middleware.json :as ring-json]
             [ring.util.response :as rr]))
 
+(defrecord Regex [id name description matches])
+(defrecord Matches [public private])
+
 (def regexes (atom #{
-  {:name "Basic 1" :desc "A very simple regular expression" :regex (str #"ROFLROFL")}
-  {:name "Basic 2" :desc "A very simple regular expression" :regex (str #"^rofl$")}
-  {:name "German date" :desc "Tests if the given input denotes a German date" :regex (str #"\d{2}\.\d{2}\.\d{4}")}}))
+  (Regex. 0 "Basic 1" "A very simple regular expression"
+          (Matches. { :positive [ "This is a test" "I should match, too" ]
+                      :negative [ "This number 5 should not match" "123" ]}
+                    { :positive []
+                      :negative [] }))}))
 
 (defn update-regexes [regex action]
-  (when-not (get (:name regex) @regexes)
-    (swap! regexes #(action % regex))))
+  (swap! regexes #(action % regex)))
+
+(defn conj-cond [seq cond-fn]
+  (filter (complement cond-fn) seq))
 
 (defroutes app-routes
   (GET "/regexes" []
@@ -23,7 +30,7 @@
   (DELETE "/regexes" request
     (update-regexes (:body request) disj)
     (rr/response @regexes))
-  (route/not-found "Not Found"))
+  (route/not-found (slurp "resources/public/404.html")))
 
 (def app
   (-> app-routes

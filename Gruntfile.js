@@ -19,7 +19,7 @@ module.exports = function (grunt) {
                     'src/components/*.js',
                     'src/app/**/*.js',
                     'src/app/*.js',
-                    '!src/components/configuration/**'
+                    '!src/components/config/**'
                 ],
                 files: {
                     'resources/public/assets/js/app.min.js': [
@@ -117,8 +117,8 @@ module.exports = function (grunt) {
                 },
                 files: {
                     'resources/public/assets/js/config.min.js': [
-                        'src/components/configuration/module.js',
-                        'src/components/configuration/Config.<%= environment.env %>.js'
+                        'src/components/config/module.js',
+                        'src/components/config/Config.<%= environment.env %>.js'
                     ]
                 }
             },
@@ -129,6 +129,9 @@ module.exports = function (grunt) {
                 files: {
                     'resources/public/assets/js/lib.min.js': [
                         'bower_components/angular/angular.js',
+                        'bower_components/angular-resource/angular-resource.min.js',
+                        'bower_components/angular-route/angular-route.min.js',
+                        'bower_components/angular-ui-router/release/angular-ui-router.min.js'
                     ]
                 }
             }

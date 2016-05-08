@@ -3,6 +3,7 @@
             [compojure.route :as route]
             [ring.middleware.defaults :refer [wrap-defaults site-defaults]]
             [ring.middleware.json :as ring-json]
+            [ring.middleware.cors :as ring-cors]
             [ring.util.response :as rr]))
 
 (defrecord Regex [id name description matches])
@@ -36,4 +37,6 @@
   (-> app-routes
     (ring-json/wrap-json-response)
     (ring-json/wrap-json-body)
+    ;(ring-cors/wrap-cors :access-control-allow-origin [#".*"]
+    ;                     :access-control-allow-methods [:get :put :post :delete])
     (wrap-defaults (assoc-in site-defaults [:security :anti-forgery] false))))

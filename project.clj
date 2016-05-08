@@ -6,6 +6,7 @@
                  [compojure "1.4.0"]
                  [ring/ring-defaults "0.1.5"]
                  [ring/ring-json "0.4.0"]
+                 [ring-cors "0.1.7"]
                  [org.clojure/clojurescript "1.8.40"]
                  [cljs-http "0.1.40"]
                  [org.clojure/core.async "0.2.374"]
